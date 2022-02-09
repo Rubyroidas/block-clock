@@ -1,17 +1,55 @@
 .row {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   height: 60px;
   display: flex;
   flex-direction: row;
+  width: 100%;
+  justify-content: center;
 }
 .column {
-  transition: transform 1s;
+  width: 4rem;
+  height: 4rem;
+  margin: 0 1rem 0 0;
+  position: relative;
+
+  &:nth-child(2n) {
+    margin: 0 3rem 0 0;
+  }
+
+  &:first-of-type {
+    margin-left: 3rem;
+  }
+
+  & > .moving-part {
+    transition: transform 1s;
+  }
+
+  & > .fisheye {
+    position: absolute;
+    left: -0.5rem;
+    top: -0.5rem;
+    width: calc(100% + 1rem);
+    height: calc(100% + 1rem);
+    background: transparent none;
+    box-shadow: 0 0 2rem #fff;
+    border-radius: 50%;
+  }
 }
 .block {
-  width: 60px;
-  height: 60px;
+  width: 4rem;
+  height: 4rem;
+  font-size: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
   color: var(--clock-text-color);
   background-color: var(--clock-surface-color);
+
+  &.current {
+    font-weight: bold;
+  }
 }
+

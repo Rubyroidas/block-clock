@@ -1,6 +1,3 @@
-# Fucking calendar
+# Block clock
 
-Available in 3 languages:
-- english
-- russian
-- ukrainian
+Nice clock at your service!
