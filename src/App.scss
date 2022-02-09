@@ -1,0 +1,70 @@
+@import 'Themes';
+
+body, html {
+  padding: 0;
+  margin: 0;
+  font-family: 'Noto Sans Display', sans-serif;
+  font-size: 2vmin;
+}
+
+body {
+  background: var(--bg) none;
+  color: var(--text-color);
+  padding: 1rem;
+}
+
+h1 {
+  font-size: 2.5rem;
+  padding: 1vmin 0;
+  margin: 1vmin 0;
+  line-height: 105%;
+}
+
+#root {
+  padding: 0;
+  margin: 0;
+}
+
+.app {
+  position: relative;
+}
+
+.gradient {
+  background: linear-gradient(
+                  90deg,
+                  var(--grad-1),
+                  var(--grad-2)
+  );
+  display: inline-block;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  display: inline-block;
+  padding: 1rem;
+  margin: 0;
+  font-size: 1rem;
+  border: solid 1px var(--link-color);
+  border-radius: 1rem;
+
+  &.bold {
+    font-weight: bold;
+  }
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 1rem;
+  margin: 0;
+}
+
+.body {
+}
