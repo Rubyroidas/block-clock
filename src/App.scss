@@ -4,8 +4,9 @@ body, html {
   padding: 0;
   margin: 0;
   font-family: 'Noto Sans Display', sans-serif;
-  font-size: 2vmin;
+  font-size: 2.5vmin;
   overflow: hidden;
+  user-select: none;
 }
 
 body {

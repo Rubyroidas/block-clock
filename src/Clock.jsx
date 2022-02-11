@@ -1,5 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import classNames from 'classnames';
+import {observer} from 'mobx-react';
+
+import {useStore} from './store';
 
 import './Clock.scss';
 
@@ -23,7 +26,8 @@ const ClockColumn = ({size, offset}) => (
 const ORIENTATION_HOST = window;
 const ORIENTATION_EVENT = 'deviceorientation';
 
-export const Clock = () => {
+export const Clock = observer(() => {
+    const store = useStore();
     const [timestamp, setTimestamp] = useState(Date.now());
     const [orientation, setOrientation] = useState({x: 0, y: 0});
     const tick = () => {
@@ -55,12 +59,16 @@ export const Clock = () => {
     const sec1 = Math.floor(ss / 10);
     const sec2 = ss % 10;
 
+    const actualOrientation = store.isDeviceOrientationLocked
+        ? {x: 30, y: 30}
+        : orientation;
+
     const style = {
         transform: `
             translate(-50%, -50%)
-            perspective(45rem)
-            rotateX(${orientation.x}deg)
-            rotateY(${orientation.y}deg)
+            perspective(60rem)
+            rotateX(${actualOrientation.x}deg)
+            rotateY(${actualOrientation.y}deg)
          `
     };
 
@@ -74,4 +82,4 @@ export const Clock = () => {
             <ClockColumn size={10} offset={sec2}/>
         </div>
     );
-};
+});

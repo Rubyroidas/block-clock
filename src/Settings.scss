@@ -1,0 +1,20 @@
+$settingsBaseSize: 1.2rem;
+
+.settings {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+
+  font-size: $settingsBaseSize;
+
+  & > label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    & > input[type=checkbox] {
+      width: $settingsBaseSize;
+      height: $settingsBaseSize;
+    }
+  }
+}

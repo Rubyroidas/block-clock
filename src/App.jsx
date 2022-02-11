@@ -1,8 +1,13 @@
 import React from 'react';
 
-import './App.scss';
 import {Clock} from './Clock';
+import {Settings} from './Settings';
+
+import './App.scss';
 
 export const App = () => (
-    <Clock/>
+    <>
+        <Clock/>
+        <Settings/>
+    </>
 );
