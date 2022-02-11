@@ -1,14 +1,20 @@
+$animation-duration: 800ms;
+
 .row {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%)
+    perspective(45rem)
+    rotateX(30deg)
+    rotateY(30deg);
   height: 60px;
   display: flex;
   flex-direction: row;
   width: 100%;
   justify-content: center;
 }
+
 .column {
   width: 4rem;
   height: 4rem;
@@ -24,32 +30,40 @@
   }
 
   & > .moving-part {
-    transition: transform 1s;
+    transition: transform $animation-duration ease-in-out;
   }
 
   & > .fisheye {
     position: absolute;
-    left: -0.5rem;
-    top: -0.5rem;
-    width: calc(100% + 1rem);
-    height: calc(100% + 1rem);
+    left: -0.25rem;
+    top: -0.25rem;
+    width: 100%;
+    height: 100%;
     background: transparent none;
-    box-shadow: 0 0 2rem #fff;
-    border-radius: 50%;
+    border: solid 0.25rem var(--clock-block-border-color);
+    //box-shadow: 0 0 2rem #fff;
   }
 }
+
 .block {
   width: 4rem;
   height: 4rem;
   font-size: 2rem;
+  font-weight: normal;
   display: flex;
   justify-content: center;
   align-items: center;
   color: var(--clock-text-color);
   background-color: var(--clock-surface-color);
+  transition: font-weight $animation-duration ease-in-out,
+    background-color $animation-duration ease-in-out,
+    filter $animation-duration ease-in-out;
+  filter: blur(3px);
 
   &.current {
     font-weight: bold;
+    background-color: var(--clock-surface-color-current);
+    filter: blur(0);
   }
 }
 

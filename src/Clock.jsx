@@ -20,13 +20,28 @@ const ClockColumn = ({size, offset}) => (
     </div>
 );
 
+const ORIENTATION_HOST = window;
+const ORIENTATION_EVENT = 'deviceorientation';
+
 export const Clock = () => {
     const [timestamp, setTimestamp] = useState(Date.now());
+    const [orientation, setOrientation] = useState({x: 0, y: 0});
     const tick = () => {
         setTimestamp(Date.now());
     };
+    const handleDeviceOrientationChange = e => {
+        setOrientation({x: e.beta, y: e.gamma});
+    };
+
     useEffect(() => {
-        return setInterval(tick, 1000);
+        const intervalId = setInterval(tick, 1000);
+
+        ORIENTATION_HOST.addEventListener(ORIENTATION_EVENT, handleDeviceOrientationChange);
+
+        return () => {
+            clearInterval(intervalId);
+            ORIENTATION_HOST.removeEventListener(ORIENTATION_EVENT, handleDeviceOrientationChange);
+        };
     }, []);
 
     const d = new Date(timestamp);
@@ -40,8 +55,17 @@ export const Clock = () => {
     const sec1 = Math.floor(ss / 10);
     const sec2 = ss % 10;
 
+    const style = {
+        transform: `
+            translate(-50%, -50%)
+            perspective(45rem)
+            rotateX(${orientation.x}deg)
+            rotateY(${orientation.y}deg)
+         `
+    };
+
     return (
-        <div className="row">
+        <div className="row" style={style}>
             <ClockColumn size={3} offset={hour1}/>
             <ClockColumn size={10} offset={hour2}/>
             <ClockColumn size={6} offset={min1}/>

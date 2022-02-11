@@ -1,12 +1,17 @@
 :root {
-  --grad-1: #ce9009;
-  --grad-2: #c40c56;
   --bg: #ccc;
   --text-color: #000;
-  --link-color: #0b28b0;
-  --highlight-background-color: rgba(255, 255, 255, 0.2);
-  --menu-icon-color: #fff;
-  --menu-bg-color: rgba(86, 86, 86, 0.77);
   --clock-text-color: rgb(255, 255, 255);
-  --clock-surface-color: rgb(75, 75, 75);
+  --clock-surface-color: rgb(108, 108, 108);
+  --clock-surface-color-current: rgb(56, 56, 56);
+  --clock-block-border-color: #fff;
+
+  @media (prefers-color-scheme: dark) {
+    --bg: #262626;
+    --text-color: #ffffff;
+    --clock-text-color: rgb(44, 44, 44);
+    --clock-surface-color: rgb(112, 111, 111);
+    --clock-surface-color-current: rgb(182, 182, 182);
+    --clock-block-border-color: #343434;
+  }
 }
