@@ -30,7 +30,7 @@ export const Clock = () => {
         setTimestamp(Date.now());
     };
     const handleDeviceOrientationChange = e => {
-        setOrientation({x: e.beta, y: e.gamma});
+        setOrientation({x: e.beta, y: -e.gamma});
     };
 
     useEffect(() => {
